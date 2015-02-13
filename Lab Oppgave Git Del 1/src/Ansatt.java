@@ -25,14 +25,18 @@ public class Ansatt extends Kort {
 	 */
 	public boolean sjekkPIN(int kode) {
 		if (kode == this.getPinKode() && !isSperret()) {
-				return true;
-		}
-		else return false;
+			return true;
+		} else
+			return false;
 	}
-	
-	/** boolean metode som returner true dersom den ansatte må taste inn pin koden. Den ansatte 
-	 * må taste pinkoden dersom hun/han prøver å komme inn utenfor kontortiden, som er fra 07 til 17 alle hverdager
-	 * @return true dersom pin koden skal tastes og false dersom den ikke skal tastes
+
+	/**
+	 * boolean metode som returner true dersom den ansatte må taste inn pin
+	 * koden. Den ansatte må taste pinkoden dersom hun/han prøver å komme inn
+	 * utenfor kontortiden, som er fra 07 til 17 alle hverdager
+	 * 
+	 * @return true dersom pin koden skal tastes og false dersom den ikke skal
+	 *         tastes
 	 */
 	public boolean skalPinTastes() {
 		GregorianCalendar sjekkTidsPunkt = new GregorianCalendar();
@@ -50,7 +54,8 @@ public class Ansatt extends Kort {
 				&& sjekkTidsPunkt.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY
 				&& sjekkTidsPunkt.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY) {
 			return true;
-		} else return false;
+		} else
+			return false;
 
 	}
 }
