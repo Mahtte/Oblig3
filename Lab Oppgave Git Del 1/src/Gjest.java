@@ -30,7 +30,7 @@ public class Gjest extends Kort {
 	public boolean sjekkPIN(int kode) {
 		GregorianCalendar sjekkTidsPunkt = new GregorianCalendar();
 		if (kode == this.getPinKode()
-				|| sjekkTidsPunkt.compareTo(kortGyldigTil) <= 0 || !isSperret()) {
+				&& sjekkTidsPunkt.compareTo(kortGyldigTil) <= 0 && !isSperret()) {
 			return true;
 		} else
 			return false;

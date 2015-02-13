@@ -4,7 +4,7 @@ public abstract class Kort {
 	private int pinKode;
 	private int kortNr;
 	private boolean sperretKort;
-	private static int nesteLedigeKortNr = 000001;
+	private static int nesteLedigeKortNr = 100000;
 
 	// Constructors
 	/**
