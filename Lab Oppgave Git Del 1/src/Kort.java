@@ -62,7 +62,7 @@ public abstract class Kort {
 	}
 
 	/**
-	 * Metode for å få tilgang til koden
+	 * Metode for å få tilgang til pinkoden
 	 * 
 	 * @return pinkode
 	 */
