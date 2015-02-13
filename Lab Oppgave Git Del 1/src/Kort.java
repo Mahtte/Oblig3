@@ -1,4 +1,3 @@
-
 public abstract class Kort {
 	private String forNavn;
 	private String etterNavn;
@@ -6,13 +5,17 @@ public abstract class Kort {
 	private int kortNr;
 	private boolean sperretKort;
 	private static int nesteLedigeKortNr = 000001;
-	
+
 	// Constructors
-	/** Lager et nytt Kort
+	/**
+	 * Lager et nytt Kort
 	 * 
-	 * @param forNavn brukerens fornavn
-	 * @param etterNavn	brukerens etternavn
-	 * @param pinKode pinkode til kortet
+	 * @param forNavn
+	 *            brukerens fornavn
+	 * @param etterNavn
+	 *            brukerens etternavn
+	 * @param pinKode
+	 *            pinkode til kortet
 	 */
 	public Kort(String forNavn, String etterNavn, int pinKode) {
 		this.forNavn = forNavn;
@@ -20,11 +23,12 @@ public abstract class Kort {
 		this.pinKode = pinKode;
 		kortNr = nesteLedigeKortNr;
 		sperretKort = false;
-		nesteLedigeKortNr ++;
+		nesteLedigeKortNr++;
 	}
-	
+
 	// Methods
-	/** metode som returner navnet til brukeren av kortet
+	/**
+	 * metode som returner navnet til brukeren av kortet
 	 * 
 	 * @return navnet til brukeren av kortet
 	 */
@@ -32,27 +36,41 @@ public abstract class Kort {
 		String navn = forNavn + " " + etterNavn;
 		return navn;
 	}
-	
-	/** Metode som returnerer true dersom kortet er sperret 
+
+	/**
+	 * Metode som returnerer true dersom kortet er sperret
 	 * 
-	 * @return true dersom kortet er sperret og false dersom kortet fortsatt kan brukes
+	 * @return true dersom kortet er sperret og false dersom kortet fortsatt kan
+	 *         brukes
 	 */
 	public boolean isSperret() {
 		return sperretKort;
 	}
-	
-	/** Metode som skriver ut alle datamedlemmene i Kortet
+
+	/**
+	 * Metode som skriver ut alle datamedlemmene i Kortet
+	 * 
 	 * @return String av alle datamedlemmene i Kortet
 	 */
 	@Override
 	public String toString() {
-		String datamedlemmer = String.format("%-20s%-20s%-20s%-20s%n", "Navn: " + forNavn + " " + etterNavn,
-				"PIN - kode: " + pinKode, "Kortnummer: " + kortNr, "Tilstand: " + (isSperret() ? "Sperret" : "Åpen"));
+		String datamedlemmer = String.format("%-20s%-20s%-20s%-20s%n", "Navn: "
+				+ forNavn + " " + etterNavn, "PIN - kode: " + pinKode,
+				"Kortnummer: " + kortNr, "Tilstand: "
+						+ (isSperret() ? "Sperret" : "Åpen"));
 		return datamedlemmer;
 	}
-	
-	//Abstract methods
-	/** Abstract metdoe som sjekke om pin Koden er rett */
+
+	/**
+	 * Metode for å få tilgang til koden
+	 * 
+	 * @return pinkode
+	 */
+	protected int getPinKode() {
+		return pinKode;
+	}
+
+	// Abstract methods
+	/** Abstract metdoe som sjekker om pin Koden er rett */
 	public abstract boolean sjekkPIN(int pin);
 }
-
