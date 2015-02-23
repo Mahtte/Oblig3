@@ -19,7 +19,8 @@ public class Gjest extends Kort {
 		kortGyldigTil.set(Calendar.DAY_OF_MONTH,
 				kortGyldigTil.get(Calendar.DAY_OF_MONTH) + 7);
 	}
-
+	
+	//Methods
 	/**
 	 * Metode som sjekker om Pin koden er gyldig, om kortet fortsatt er gyldig
 	 * og om kortet er sperret
