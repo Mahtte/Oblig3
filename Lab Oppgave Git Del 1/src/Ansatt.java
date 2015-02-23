@@ -26,6 +26,8 @@ public class Ansatt extends Kort {
 	public boolean sjekkPIN(int kode) {
 		if (kode == this.getPinKode() && !isSperret()) {
 			return true;
+		} else if (!isSperret() && !skalPinTastes()) {
+			return true;
 		} else
 			return false;
 	}
@@ -38,7 +40,7 @@ public class Ansatt extends Kort {
 	 * @return true dersom pin koden skal tastes og false dersom den ikke skal
 	 *         tastes
 	 */
-	public boolean skalPinTastes() {
+	private boolean skalPinTastes() {
 		GregorianCalendar sjekkTidsPunkt = new GregorianCalendar();
 		GregorianCalendar ikkePIN = new GregorianCalendar(
 				sjekkTidsPunkt.get(Calendar.YEAR),
@@ -49,10 +51,10 @@ public class Ansatt extends Kort {
 				sjekkTidsPunkt.get(Calendar.MONTH),
 				sjekkTidsPunkt.get(Calendar.DAY_OF_MONTH), 17, 0, 0);
 
-		if (sjekkTidsPunkt.compareTo(ikkePIN) >= 0
-				&& sjekkTidsPunkt.compareTo(ikkePIN2) <= 0
-				&& sjekkTidsPunkt.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY
-				&& sjekkTidsPunkt.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY) {
+		if (sjekkTidsPunkt.compareTo(ikkePIN) > 0
+				|| sjekkTidsPunkt.compareTo(ikkePIN2) < 0
+				|| sjekkTidsPunkt.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY
+				|| sjekkTidsPunkt.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
 			return true;
 		} else
 			return false;
