@@ -14,15 +14,15 @@ public class SnuTekst {
 	static int antallTegn = 0;
 	
 	public static void baklengs(String tekst) {
-		antallTegn++;
-		if (tekst.length() <= 1) {		// Base case
-			System.out.print(tekst.charAt(tekst.length() - 1));
-			System.out.printf("%n" + "Antall tegn: " + antallTegn);
-		}
-		else {
-			System.out.print(tekst.charAt(tekst.length() - 1));
-			baklengs(tekst.substring(0, tekst.length() - 1));
-			antallTegn++;
-		}
+		baklengs(tekst, tekst.length() - 1);
+	      System.out.printf("%nAntall tegn: " + antallTegn);
 	}
+	
+	public static void baklengs(String tekst, int siste) {
+	    if (siste >= 0) {
+	      System.out.print(tekst.charAt(siste));
+			antallTegn++;
+	      baklengs(tekst, siste - 1);
+	    }
+	  }
 }
