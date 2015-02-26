@@ -10,7 +10,10 @@ public class TowersOfHanoi {
 		// Find the solution recursively
 		System.out.println("Slik flyttes diskene:");
 		moveDisks(n, 'A', 'B', 'C');
+		System.out.println("Diskene ble flyttet " + antallFlyttinger + " ganger");
 	}
+	
+	  static int antallFlyttinger = 0; //holder rede på antall flyttinger
 
 	/**
 	 * The method for finding the solution to move n disks from fromTower to
@@ -18,6 +21,7 @@ public class TowersOfHanoi {
 	 */
 	public static void moveDisks(int n, char fromTower, char toTower,
 			char auxTower) {
+		antallFlyttinger++;
 		if (n == 1) // Stopping condition
 			System.out.println("Flytt disk " + n + " fra " + fromTower + " til "
 					+ toTower);
